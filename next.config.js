@@ -16,10 +16,6 @@ const nextConfig = {
     formats: ["image/webp", "image/avif"],
     unoptimized: true,
   },
-  // Enable experimental features for better performance
-  experimental: {
-    optimizeCss: true,
-  },
 }
 
 module.exports = nextConfig

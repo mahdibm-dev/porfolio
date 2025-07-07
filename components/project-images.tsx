@@ -19,12 +19,13 @@ export function ProjectImage({
   className?: string
 }) {
   return (
-    <div className={`relative overflow-hidden rounded-lg ${className}`}>
+    <div className={`relative overflow-hidden rounded-lg bg-muted ${className}`}>
       <Image
-        src={src || "/placeholder.svg"}
+        src={src || "/placeholder.svg?height=400&width=600"}
         alt={alt}
-        fill
-        className="object-cover transition-transform hover:scale-105"
+        width={600}
+        height={400}
+        className="w-full h-full object-contain"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         priority={false}
       />

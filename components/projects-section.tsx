@@ -97,7 +97,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">My Work</h2>
           <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
             Here are some of the projects I've worked on, showcasing my experience with modern web technologies.
@@ -106,107 +106,102 @@ export function ProjectsSection() {
           <div className="grid gap-8 md:gap-12">
             {projects.map((project, index) => (
               <Card key={index} className="overflow-hidden">
-                <div className={`grid lg:grid-cols-2 gap-6 ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}>
-                  <div className={`${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                <div className="p-6">
+                  <CardHeader className="p-0 mb-6">
                     <ProjectImage
                       src={project.image}
                       alt={`${project.title} screenshot`}
-                      className="w-full h-64 lg:h-full"
+                      className="w-full h-64 mb-6"
                     />
-                  </div>
-
-                  <div className={`p-6 ${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
-                    <CardHeader className="p-0 mb-4">
-                      <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-2">
-                        <span className="font-medium">{project.company}</span>
-                        <span>•</span>
-                        <span>{project.duration}</span>
-                        {project.location && (
-                          <>
-                            <span>•</span>
-                            <span>{project.location}</span>
-                          </>
-                        )}
-                      </div>
-                      <CardTitle className="text-xl sm:text-2xl mb-2">{project.title}</CardTitle>
-                      <div className="flex items-center gap-2 text-sm text-primary mb-3">
-                        <User className="w-4 h-4" />
-                        <span className="font-medium">{project.role}</span>
-                      </div>
-                    </CardHeader>
-
-                    <CardContent className="p-0">
-                      {project.projectDescription.length > 0 && (
-                        <div className="mb-4">
-                          <h4 className="font-semibold mb-2">Project Overview:</h4>
-                          <ul className="text-sm leading-relaxed text-muted-foreground space-y-1">
-                            {project.projectDescription.map((point, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                <span className="text-primary mt-1.5 text-xs">•</span>
-                                <span>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                    <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-2">
+                      <span className="font-medium">{project.company}</span>
+                      <span>•</span>
+                      <span>{project.duration}</span>
+                      {project.location && (
+                        <>
+                          <span>•</span>
+                          <span>{project.location}</span>
+                        </>
                       )}
+                    </div>
+                    <CardTitle className="text-xl sm:text-2xl mb-2">{project.title}</CardTitle>
+                    <div className="flex items-center gap-2 text-sm text-primary mb-3">
+                      <User className="w-4 h-4" />
+                      <span className="font-medium">{project.role}</span>
+                    </div>
+                  </CardHeader>
 
-                      {project.myRole.length > 0 && (
-                        <div className="mb-4">
-                          <h4 className="font-semibold mb-2">My Role & Contributions:</h4>
-                          <ul className="text-sm leading-relaxed text-muted-foreground space-y-1">
-                            {project.myRole.map((point, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                <span className="text-primary mt-1.5 text-xs">•</span>
-                                <span>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
+                  <CardContent className="p-0">
+                    {project.projectDescription.length > 0 && (
                       <div className="mb-4">
-                        <h4 className="font-semibold mb-2">Key Highlights:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.highlights.map((highlight, i) => (
-                            <Badge key={i} variant="secondary">
-                              {highlight}
-                            </Badge>
+                        <h4 className="font-semibold mb-2">Project Overview:</h4>
+                        <ul className="text-sm leading-relaxed text-muted-foreground space-y-1">
+                          {project.projectDescription.map((point, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <span className="text-primary mt-1.5 text-xs">•</span>
+                              <span>{point}</span>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
+                    )}
 
+                    {project.myRole.length > 0 && (
+                      <div className="mb-4">
+                        <h4 className="font-semibold mb-2">My Role & Contributions:</h4>
+                        <ul className="text-sm leading-relaxed text-muted-foreground space-y-1">
+                          {project.myRole.map((point, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <span className="text-primary mt-1.5 text-xs">•</span>
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div className="mb-4">
+                      <h4 className="font-semibold mb-2">Key Highlights:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.highlights.map((highlight, i) => (
+                          <Badge key={i} variant="secondary">
+                            {highlight}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mb-6">
+                      <h4 className="font-semibold mb-2">Technologies:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, i) => (
+                          <Badge key={i} variant="outline">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+
+                    {project.liveExamples && (
                       <div className="mb-6">
-                        <h4 className="font-semibold mb-2">Technologies:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech, i) => (
-                            <Badge key={i} variant="outline">
-                              {tech}
-                            </Badge>
+                        <h4 className="font-semibold mb-3">Live Examples:</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {project.liveExamples.map((example, i) => (
+                            <a
+                              key={i}
+                              href={example.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 p-2 rounded-md border hover:bg-muted/50 transition-colors text-sm"
+                            >
+                              <ExternalLink className="w-3 h-3 text-primary" />
+                              <span className="truncate">{example.name}</span>
+                            </a>
                           ))}
                         </div>
                       </div>
-
-                      {project.liveExamples && (
-                        <div className="mb-6">
-                          <h4 className="font-semibold mb-3">Live Examples:</h4>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            {project.liveExamples.map((example, i) => (
-                              <a
-                                key={i}
-                                href={example.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 p-2 rounded-md border hover:bg-muted/50 transition-colors text-sm"
-                              >
-                                <ExternalLink className="w-3 h-3 text-primary" />
-                                <span className="truncate">{example.name}</span>
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </CardContent>
-                  </div>
+                    )}
+                  </CardContent>
                 </div>
               </Card>
             ))}
